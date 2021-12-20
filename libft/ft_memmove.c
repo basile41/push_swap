@@ -6,12 +6,12 @@
 /*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 12:04:21 by bregneau          #+#    #+#             */
-/*   Updated: 2021/11/29 11:31:14 by bregneau         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:44:22 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t			i;
@@ -36,5 +36,29 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		while (len-- > 0)
 			tmp2[len] = tmp1[len];
 	}
+	return (dst);
+}
+*/
+
+void	*ft_memmove(void *dst, const void *src, size_t n)
+{
+	unsigned char	*cdst;
+	unsigned char	*csrc;
+	uint64_t		*lldst;
+	uint64_t		*llsrc;
+
+	if (src > dst)
+		return (ft_memcpy(dst, src, n));
+	lldst = (uint64_t *)(dst + n - 8);
+	llsrc = (uint64_t *)(src + n - 8);
+	while (n >= 8)
+	{
+		*lldst-- = *llsrc--;
+		n -= 8;
+	}
+	cdst = (unsigned char *)lldst;
+	csrc = (unsigned char *)llsrc;
+	while (n--)
+		*cdst-- = *csrc--;
 	return (dst);
 }

@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 10:02:50 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/19 19:27:55 by bregneau         ###   ########.fr       */
+/*   Created: 2021/12/12 20:28:17 by bregneau          #+#    #+#             */
+/*   Updated: 2021/12/19 12:21:56 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-/*
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*b;
+#include "push_swap.h"
 
-	b = s;
-	i = 0;
-	while (i < n)
-		b[i++] = 0;
-}
-*/
-void	ft_bzero(void *s, size_t n)
+#include <stdio.h>
+void aff(int *a)
 {
-	ft_memset(s, 0, n);
+	while (*a)
+	{
+		printf("%d\n", *a++);
+	}
 }
 
+int	main(int argc, char **argv)
+{
+	int	*a;
+	int	*b;
+
+	if (argc > 1)
+	{
+		a = ft_parse_args(argc, argv);
+		if (!a)
+			return (ft_put_error());
+		b = ft_calloc(argc, sizeof(*b));
+aff(a);
+		free(a);
+		free(b);
+		return (0);
+	}
+	return (ft_put_error());
+}

@@ -6,33 +6,38 @@
 #    By: bregneau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 19:09:54 by bregneau          #+#    #+#              #
-#    Updated: 2021/12/14 19:37:53 by bregneau         ###   ########.fr        #
+#    Updated: 2021/12/20 15:34:13 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=
+SRCS		= 	./src/main.c \
+				./src/parsing.c
 
-OBJS		= $(SRCS:.c=o)
+OBJS		= $(SRCS:.c=.o)
+
+LIB			= ./libft/libft.a
 
 CC			= gcc
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror -I.
+CFLAGS		= -Wall -Wextra -Werror -c -I./includes
 
 NAME		= push_swap
 
 all:		$(NAME)
 
-$(NAME)		$(OBJ)
-			$(MAKE) -C ./libft
-			cp ./libft/libft.a $(NAME)
-			ar rcs $(AME) $(OBJS)
+.o:			
+			$(CC) $(CFLAGS) $< -o ${<.c=.o}
 
-clean:		$(MAKE) clean -C ./libft
-			$(RM) $(OBJ)
+$(NAME):	$(OBJS)
+			$(MAKE) -C ./libft
+			$(CC) $(LIB) $(OBJS) -o $(NAME)
+
+clean:		
+			$(RM) $(OBJS)
+			$(MAKE) clean -C ./libft
 
 fclean:		clean
-			$(MAKE) fclean -C ./libft
-			$(RM) $(NAME) ./libft/libft.a
+			$(RM) $(LIB) $(NAME)
 
 re:			fclean $(NAME)
 
