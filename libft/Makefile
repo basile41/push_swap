@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bregneau <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 17:43:00 by bregneau          #+#    #+#              #
-#    Updated: 2021/12/03 13:22:53 by bregneau         ###   ########.fr        #
+#    Updated: 2022/01/27 12:27:57 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,13 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_strncmp.c ft_isalpha.c \
 					ft_calloc.c ft_strdup.c ft_memcmp.c ft_substr.c \
 					ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 					ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
-					ft_putnbr_fd.c ft_strmapi.c ft_striteri.c
+					ft_putnbr_fd.c ft_strmapi.c ft_striteri.c \
+					ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c \
+					ft_realloc.c ft_atoi_base.c ft_strcpy.c ft_free_strs.c \
+					ft_printf/ft_print_char.c ft_printf/ft_print_hexa.c \
+					ft_printf/ft_print_int.c ft_printf/ft_print_ptr.c \
+					ft_printf/ft_print_str.c  ft_printf/ft_print_uint.c \
+					ft_printf/ft_printf.c
 					
 OBJS			= $(SRCS:.c=.o)
 
@@ -33,20 +39,28 @@ CFLAGS			= -Wall -Wextra -Werror -I.
 
 NAME			= libft.a
 
-all:			$(NAME)
+all:			bonus
+
+%.o: %.c
+				@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+				@ar rcs $(NAME) $(OBJS)
+				@ranlib $(NAME)
+				@echo "$(NAME) created"
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
+				@echo "$(NAME) deleted"
 
-re:				fclean $(NAME)
+re:				fclean all
 
 bonus:			$(OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+				@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+				@ranlib $(NAME)
+				@echo "$(NAME) created"
 
 .PHONY:			all clean fclean re bonus

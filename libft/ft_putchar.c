@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 17:01:39 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/19 17:17:09 by bregneau         ###   ########.fr       */
+/*   Created: 2022/01/10 13:55:22 by bregneau          #+#    #+#             */
+/*   Updated: 2022/01/10 13:55:24 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#ifndef SIZE
-# define SIZE 7
-#endif
-
-int main()
+void	ft_putchar(char c)
 {
-	char str[SIZE];
-	int i;
-
-	i = 0;
-	while (i < 100000000)
-	{
-		ft_memset(str, i, SIZE);
-		i++;
-	}
+	write(1, &c, 1);
 }

@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 10:02:50 by bregneau          #+#    #+#             */
-/*   Updated: 2022/01/09 12:56:30 by bregneau         ###   ########.fr       */
+/*   Created: 2022/01/10 13:56:06 by bregneau          #+#    #+#             */
+/*   Updated: 2022/01/10 13:56:34 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*b;
 
-	b = s;
-	i = 0;
-	while (i < n)
-		b[i++] = 0;
-}
-*/
-void	ft_bzero(void *s, size_t n)
+void	ft_putnbr(int n)
 {
-	ft_memset(s, 0, n);
+	long int	nb;
+	char		tmp[12];
+	int			i;
+
+	nb = n;
+	i = 0;
+	if (n == 0)
+		ft_putchar('0');
+	if (nb < 0)
+	{
+		tmp[i++] = '-';
+		nb = -nb;
+	}
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	tmp[i] = '\0';
+	while (nb)
+	{
+		tmp[--i] = nb % 10 + '0';
+		nb /= 10;
+	}
+	ft_putstr(tmp);
 }

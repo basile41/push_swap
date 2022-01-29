@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 20:28:17 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/19 12:21:56 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/01/29 14:18:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-#include <stdio.h>
-void aff(int *a)
+void	aff(int *a)
 {
-	while (*a)
+	while (a)
 	{
-		printf("%d\n", *a++);
+		ft_printf("%d\n", *a++);
 	}
 }
 

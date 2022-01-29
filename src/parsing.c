@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:02:56 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/20 15:34:51 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/01/29 14:02:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	*ft_parse_args(int argc, char **argv)
 		if (!ft_check_errors(size, strs) || size == 0)
 			return (NULL);
 		tab = ft_atoi_tab(size, strs);
-		free(strs);
+		ft_free_strs(strs);
 		return (tab);
 	}
 	if (!ft_check_errors(size, argv + 1))
