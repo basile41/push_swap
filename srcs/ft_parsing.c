@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:02:56 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/18 20:12:03 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:55:31 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 int	str_count(char *str, char c);
 
@@ -101,7 +101,7 @@ int	*ft_parse_args(int argc, char **argv)
 		if (!ft_check_errors(size, strs) || size == 0)
 			return (NULL);
 		tab = ft_atoi_tab(size, strs);
-		free(strs);
+		ft_free_strs(strs);
 		return (tab);
 	}
 	if (!ft_check_errors(size, argv + 1))

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:27:08 by bregneau          #+#    #+#             */
-/*   Updated: 2022/01/26 18:43:37 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/08 20:17:43 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 # include "ft_printf/ft_printf.h"
 
 int		ft_isalpha(int c);

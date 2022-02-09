@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 12:19:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/01/29 15:36:37 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:52:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,45 @@ int	ft_add_new_elem(t_stack *stack, int value)
 	if (elem == NULL)
 		return (0);
 	elem->value = value;
-	ft_add_elem(stack, elem);
+	ft_add_back(stack, elem);
 	return (1);
 }
 
-void	ft_add_elem(t_stack *stack, t_elem *elem)
+void	ft_add_back(t_stack *stack, t_elem *elem)
 {
 	if (stack->size == 0)
 	{
 		elem->prev = elem;
 		elem->next = elem;
+		stack->head = elem;
 	}
 	else
 	{
-		elem->next = stack->head;
 		elem->prev = stack->head->prev;
+		elem->next = stack->head;
 		stack->head->prev->next = elem;
-		stack->head->next->prev = elem;
+		stack->head->prev = elem;
 	}
-	stack->head = elem;
 	stack->size++;
 }
+
+void	ft_rotate(t_stack *stack)
+{
+	stack->head = stack->head->next;
+}
+
+
+void	ft_rrotate(t_stack *stack)
+{
+	stack->head = stack->head->prev;
+}
+
+void	ft_add_front(t_stack *stack, t_elem *elem)
+{
+	ft_add_back(stack, elem);
+	ft_rrotate(stack);
+}
+
 
 void	ft_sup_first_elem(t_stack *stack)
 {
@@ -59,7 +77,7 @@ void	ft_sup_first_elem(t_stack *stack)
 	}
 }
 
-ft_free_stack(t_stack *stack)
+void	ft_free_stack(t_stack *stack)
 {
 	t_elem	*elem;
 	
