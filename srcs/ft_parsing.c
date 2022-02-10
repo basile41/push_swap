@@ -6,13 +6,14 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:02:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/08 19:55:31 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:50:10 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 int	str_count(char *str, char c);
+int	ft_isint(char *s);
 
 int	ft_put_error(void)
 {
@@ -20,30 +21,6 @@ int	ft_put_error(void)
 	return (0);
 }
 
-int	ft_isint(char *s)
-{
-	int	len;
-
-	len = ft_strlen(s);
-	if (*s == '-')
-	{
-		if (len > 11 || (len == 11 && ft_strncmp(s, "-2147483648", 11) > 0))
-			return (0);
-		s++;
-	}
-	else
-	{
-		if (*s == '+')
-			s++;
-		len = ft_strlen(s);
-		if (len > 10 || (len == 10 && ft_strncmp(s, "2147483647", 11) > 0))
-			return (0);
-	}
-	while (*s)
-		if (ft_isdigit(*s++) == 0)
-			return (0);
-	return (1);
-}
 
 int	ft_check_errors(int size, char **strs)
 {
@@ -65,15 +42,15 @@ char	**ft_split_arg(int *size, char *arg)
 	return (ft_split(arg, ' '));
 }
 
-int	*ft_atoi_tab(int size, char **strs)
+int	ft_fill_stack(int size, char **strs, t_stack *stack)
 {
 	int	*tab;
 	int	i;
 	int	j;
 
-	tab = ft_calloc(size + 1, sizeof(*tab));
+	tab = ft_calloc(size, sizeof(*tab));
 	if (!tab)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (i < size)
 	{
@@ -81,16 +58,16 @@ int	*ft_atoi_tab(int size, char **strs)
 		j = 0;
 		while (j < i)
 			if (tab[i] == tab[j++])
-				return (NULL);
+				size = 0;
+		ft_add_new_elem(stack, tab[i]);
 		i++;
 	}
-	tab[i] = 0;
-	return (tab);
+	free(tab);
+	return (size);
 }
 
-int	*ft_parse_args(int argc, char **argv)
+int	ft_parse_args(int argc, char **argv, t_stack *stack)
 {
-	int		*tab;
 	int		size;
 	char	**strs;
 
@@ -99,12 +76,12 @@ int	*ft_parse_args(int argc, char **argv)
 	{
 		strs = ft_split_arg(&size, argv[1]);
 		if (!ft_check_errors(size, strs) || size == 0)
-			return (NULL);
-		tab = ft_atoi_tab(size, strs);
+			size = 0;
+		size = ft_fill_stack(size, strs, stack);
 		ft_free_strs(strs);
-		return (tab);
+		return (size);
 	}
 	if (!ft_check_errors(size, argv + 1))
-		return (NULL);
-	return (ft_atoi_tab(size, argv + 1));
+		return (0);
+	return (ft_fill_stack(size, argv + 1, stack));
 }

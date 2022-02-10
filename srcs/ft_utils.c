@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_operation.c                                     :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 16:31:00 by bregneau          #+#    #+#             */
-/*   Updated: 2022/01/29 12:18:59 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/10 17:43:30 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/10 17:49:36 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_swap(t_stack *stack)
+int	ft_isint(char *s)
 {
-	t_elem	*tmp;
-	t_elem	*e1;
-	t_elem	*e2;
+	int	len;
 
-	e1 = stack->head;
-	e2 = stack->head->next;
-	tmp->prev = e1->prev;
-	tmp->next = e1->next;
-	e1->prev = e2->prev;
-	e1->next = e2->next;
-	e2->prev = tmp->prev;
-	e2->next = tmp->next;
-
-}
-
-void	ft_push()
-{
-}
-
-void	ft_rotate()
-{
-}
-
-void	ft_rev_rot()
-{
+	len = ft_strlen(s);
+	if (*s == '-')
+	{
+		if (len > 11 || (len == 11 && ft_strncmp(s, "-2147483648", 11) > 0))
+			return (0);
+		s++;
+	}
+	else
+	{
+		if (*s == '+')
+			s++;
+		len = ft_strlen(s);
+		if (len > 10 || (len == 10 && ft_strncmp(s, "2147483647", 11) > 0))
+			return (0);
+	}
+	if (*s == '\0')
+		return (0);
+	while (*s)
+		if (ft_isdigit(*s++) == 0)
+			return (0);
+	return (1);
 }

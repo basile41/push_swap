@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/09 16:49:20 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/10 19:40:51 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,21 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-int	*ft_parse_args(int argc, char **argv);
-int	ft_check_errors(int argc, char **argv);
-int	ft_put_error(void);
+int		ft_push_swap(t_stack *a, t_stack *b);
+
+//parsing
+int		ft_parse_args(int argc, char **argv, t_stack *stack);
+int		ft_check_errors(int argc, char **argv);
+int		ft_put_error(void);
 
 // //Operations
-// void	ft_swap(t_stack *s);
-// void	ft_push(t_stack *src, t_stack *dst);
+void	ft_swap(t_stack *stack);
+void	ft_push(t_stack *src, t_stack *dst);
+
 // void	ft_rotate(t_satck *s);
 // void	ft_rev_rot(t_stack);
 
 //ft_stack
-void	ft_init_stack(t_stack *stack);
 int		ft_add_new_elem(t_stack *stack, int value);
 void	ft_add_back(t_stack *stack, t_elem *elem);
 void	ft_add_front(t_stack *stack, t_elem *elem);

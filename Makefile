@@ -6,13 +6,17 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 19:09:54 by bregneau          #+#    #+#              #
-#    Updated: 2022/02/09 15:38:49 by bregneau         ###   ########.fr        #
+#    Updated: 2022/02/10 19:30:23 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# srcs/parsing.c \#
 SRCS		= 	srcs/main.c \
-				srcs/ft_stack.c
+				srcs/ft_parsing.c \
+				srcs/ft_stack.c \
+				srcs/ft_stack2.c \
+				srcs/ft_utils.c \
+				srcs/ft_push_swap.c \
+				srcs/ft_operations.c 
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -30,7 +34,7 @@ all:		$(NAME)
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(LIB) $(OBJS)
-			$(CC) $(LIB) $(OBJS) -o $(NAME)
+			$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
 
 $(LIB):	
 			@echo "Compiling libft..."
