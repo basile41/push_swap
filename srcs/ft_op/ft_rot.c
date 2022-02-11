@@ -1,13 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_operations.c                                    :+:      :+:    :+:   */
+/*   ft_rot.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 17:50:51 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/11 17:42:42 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/11 19:42:50 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/11 19:46:46 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+
+void	ft_ra(t_stack *a)
+{
+	ft_rotate(a);
+	ft_putendl("ra");
+}
+
+void	ft_ra(t_stack *b)
+{
+	ft_rotate(b);
+	ft_putendl("rb");
+}
+
+void	ft_rr(t_stack *a, t_stack *b)
+{
+	ft_rotate(a);
+	ft_rotate(b);
+	ft_putendl("rr");
+}

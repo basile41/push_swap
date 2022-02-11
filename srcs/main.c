@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 20:28:17 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/10 20:54:10 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/11 17:01:04 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int	main(int argc, char **argv)
 			return (ft_put_error());
 		}
 		ft_push_swap(&a, &b);
+		ft_free_stack(&a);
+		ft_free_stack(&b);
 		return (0);
 	}
-	return (ft_put_error());
+	return (0);
 }
 
 // int main()

@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 14:48:24 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/19 14:59:13 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/11 15:08:52 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ft_p(int *a, int *b)
+void	ft_is_sorted(t_stack *stack)
 {
-	
+	t_stack *next;
+
+	next = stack->head->next;
+	while (next != stack->head)
+	{
+		
+	}
 }
+

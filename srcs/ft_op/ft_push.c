@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 14:10:21 by bregneau          #+#    #+#             */
-/*   Updated: 2021/12/19 14:48:08 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/11 19:34:45 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/11 19:43:25 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	ft_s(int *a);
+void	ft_pa(t_stack *a, t_stack *b)
 {
-	int tmp;
-
-	tmp = a[0];
-	a[1] = a[0];
-	a[0] = tmp;
+	ft_push(b, a);
+	ft_putendl("pa");
 }
 
-void	ft_ss(int *a, int *b)
+void	ft_pa(t_stack *a, t_stack *b)
 {
-	ft_s(a);
-	ft_s(b);
+	ft_push(a, b);
+	ft_putendl("pb");
 }
