@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/11 19:23:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:10:41 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,17 @@ int		ft_check_errors(int argc, char **argv);
 int		ft_put_error(void);
 
 // //Operations
-
+void	ft_sa(t_stack *a);
+void	ft_sb(t_stack *b);
+void	ft_ss(t_stack *a, t_stack *b);
+void	ft_pa(t_stack *a, t_stack *b);
+void	ft_pb(t_stack *a, t_stack *b);
+void	ft_ra(t_stack *a);
+void	ft_rb(t_stack *b);
+void	ft_rr(t_stack *a, t_stack *b);
+void	ft_rra(t_stack *a);
+void	ft_rrb(t_stack *b);
+void	ft_rrr(t_stack *a, t_stack *b);
 
 //ft_stack
 int		ft_add_new_elem(t_stack *stack, int value);

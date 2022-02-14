@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/11 19:29:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:33:56 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,38 @@ int	ft_is_sorted(t_elem *head)
 
 void	ft_sort_2(t_stack *a)
 {
-	if (a->head->value > a->head->next->value)
+	if (a->head->index == 1)
 		ft_putendl("sa");
 }
 
 void	ft_sort_3(t_stack *a)
 {
-	if (a->head > a->head->next)
+	if (a->head->index == 2)
+		ft_ra(a);
+	if (a->head->next->index == 2)
+		ft_rra(a);
+	if (a->head->index == 1)
+		ft_sa(a);
+}
+
+void ft_sort_7(t_stack *a, t_stack *b)
+{
+	while (a->size > 3)
 	{
-		if(a->head > a->head->prev)
-			ft_putendl("");
+		if (a->head->index > 2)
+			ft_pb(a, b);
+		else
+			ft_ra(a);
 	}
+	ft_sort_3(a);
 }
 
 int	ft_push_swap(t_stack *a, t_stack *b)
 {
-		
 	ft_set_index(a);
-	ft_sort_2(a);
-	
-	if (b)
-		b = b;
-	// ft_aff_stack(b);
-	// ft_rotate(b);
-	// ft_push(a, b);
-	// ft_push(a, b);
-	// ft_aff_stack(a);
-	// ft_aff_stack(b);
-	
+	if (a->size > 6)
+	{
+		ft_sort(a, b);
+	}
 	return (1);
 }

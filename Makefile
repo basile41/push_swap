@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 19:09:54 by bregneau          #+#    #+#              #
-#    Updated: 2022/02/10 19:30:23 by bregneau         ###   ########.fr        #
+#    Updated: 2022/02/14 12:56:21 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ SRCS		= 	srcs/main.c \
 				srcs/ft_stack2.c \
 				srcs/ft_utils.c \
 				srcs/ft_push_swap.c \
-				srcs/ft_operations.c 
+				srcs/ft_op/ft_swap.c \
+				srcs/ft_op/ft_push.c \
+				srcs/ft_op/ft_rot.c \
+				srcs/ft_op/ft_rrot.c
 
 OBJS		= $(SRCS:.c=.o)
 
