@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:32:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/11 17:42:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:13:45 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ void	ft_sup_first_elem(t_stack *stack)
 		stack->head = stack->head->next;
 		stack->size--;
 	}
+}
+
+t_elem	*get_next(t_elem *elem, t_elem *curr)
+{
+	if (!curr)
+	{
+		curr = elem;
+		return (curr);
+	}
+	if (curr)
+		curr = curr->next;
+	if (curr == elem)
+		curr = NULL;
+	return (curr);
 }
 
 void	ft_free_stack(t_stack *stack)
