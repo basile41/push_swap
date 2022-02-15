@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:32:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/15 19:13:45 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:59:06 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_push(t_stack *src, t_stack *dst)
 
 void	ft_sup_first_elem(t_stack *stack)
 {
+	if (stack->size == 1)
+		ft_bzero(stack, sizeof(*stack));
 	if (stack->size)
 	{
 		stack->head->next->prev = stack->head->prev;
