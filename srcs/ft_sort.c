@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/15 21:02:10 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:34:31 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	ft_push_inf_n(t_stack *a, t_stack *b, int n)
 {
 	t_elem	*curr;
 
-	curr = NULL;
-	while (a->size > n)
+	while (b->size < n)
 	{
+		curr = a->head;
 		if (curr->index < n)
 			ft_pb(a, b);
 		else
@@ -64,7 +64,7 @@ void	ft_insert(t_stack *a, t_stack *b)
 	{
 		if (b->head->index < a->head->index
 			&& (b->head->index > a->head->prev->index
-				|| a->head->prev->index == a->size -1))
+				|| a->head->prev->index == (a->size + b->size -1)))
 			ft_pa(a, b);
 		else
 			ft_ra(a);
@@ -77,7 +77,8 @@ void	ft_insert(t_stack *a, t_stack *b)
 
 void	ft_sort(t_stack *a, t_stack *b)
 {
-	ft_push_inf_n(a, b, a->size - 3);
+	// ft_push_inf_n(a, b, a->size / 2);
+	ft_push_inf_n(a, b, (a->size + b->size - 3));
 	ft_sort_3(a);
 	ft_insert(a, b);
 }
