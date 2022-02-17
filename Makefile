@@ -6,51 +6,61 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 19:09:54 by bregneau          #+#    #+#              #
-#    Updated: 2022/02/17 12:17:09 by bregneau         ###   ########.fr        #
+#    Updated: 2022/02/17 16:51:26 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= 	srcs/main.c \
-				srcs/ft_parsing.c \
-				srcs/ft_stack.c \
-				srcs/ft_stack2.c \
-				srcs/ft_utils.c \
-				srcs/ft_push_swap.c \
-				srcs/ft_op/ft_swap.c \
-				srcs/ft_op/ft_push.c \
-				srcs/ft_op/ft_rot.c \
-				srcs/ft_op/ft_rrot.c \
-				srcs/ft_sort.c
+NAME			=	push_swap
 
-OBJS		= $(SRCS:.c=.o)
+LIBFT_PATH		=	./libft/
+SRCS_PATH		=	./srcs/
+OBJS_PATH		=	./objs/
 
-LIB			= ./libft/libft.a
+INC				=	-I $(addprefix $(LIBFT_PATH),.)\
+					-I ./includes
 
-CC			= cc
-RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror -I./includes
+SRCS			= 	main.c \
+					ft_parsing.c \
+					ft_stack.c \
+					ft_stack2.c \
+					ft_utils.c \
+					ft_push_swap.c \
+					ft_op_swap.c \
+					ft_op_push.c \
+					ft_op_rot.c \
+					ft_op_rrot.c \
+					ft_set_index.c \
+					ft_sort.c
 
-NAME		= push_swap
+OBJS			=	$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
 
-all:		$(NAME)
+LIBFT			=	$(addprefix $(LIBFT_PATH),libft.a)
 
-%.o: %.c
-			@$(CC) $(CFLAGS) -c $< -o $@
+LIBS			=	-Llibft -lft
 
-$(NAME):	$(LIB) $(OBJS)
-			$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
+CC				=	cc
+CFLAGS			=	-MMD -Wall -Wextra -Werror -g3 $(INC)
 
-$(LIB):	
-			@echo "Compiling libft..."
-			@make -C libft
-			@make clean -C libft
+all:				$(NAME)
+
+$(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
+					@mkdir -p $(OBJS_PATH)
+					@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME):			$(LIBFT) $(OBJS)
+					$(CC) $(OBJS) $(LIBS) -o $(NAME)
+
+$(LIBFT):	
+					@echo "Compiling libft..."
+					@make -C $(LIBFT_PATH)
+					@make clean -C $(LIBFT_PATH)
 
 clean:		
-			$(RM) $(OBJS)
+					rm -rf $(OBJS_PATH)
 
-fclean:		clean
-			$(RM) $(LIB) $(NAME)
+fclean:				clean
+					rm -f $(LIBFT) $(NAME)
 
-re:			fclean $(NAME)
+re:					fclean $(NAME)
 
-.PHONY:		all clean fclean re
+.PHONY:				all clean fclean re

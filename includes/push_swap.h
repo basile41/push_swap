@@ -6,14 +6,14 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/15 21:00:50 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:34:10 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <limits.h>
 
 typedef struct s_elem	t_elem;
@@ -38,7 +38,7 @@ int		ft_parse_args(int argc, char **argv, t_stack *stack);
 int		ft_check_errors(int argc, char **argv);
 int		ft_put_error(void);
 
-// //Operations
+//Operations
 void	ft_sa(t_stack *a);
 void	ft_sb(t_stack *b);
 void	ft_ss(t_stack *a, t_stack *b);
@@ -62,6 +62,9 @@ void	ft_push(t_stack *src, t_stack *dst);
 void	ft_sup_first_elem(t_stack *stack);
 void	ft_free_stack(t_stack *stack);
 t_elem	*get_next(t_elem *elem, t_elem *curr);
+
+//ft_set_index
+void	ft_set_index(t_stack *stack);
 
 //ft_sort
 void	ft_sort(t_stack *a, t_stack *b);
