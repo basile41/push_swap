@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 19:09:54 by bregneau          #+#    #+#              #
-#    Updated: 2022/02/15 21:01:51 by bregneau         ###   ########.fr        #
+#    Updated: 2022/02/17 12:17:09 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS		= $(SRCS:.c=.o)
 
 LIB			= ./libft/libft.a
 
-CC			= gcc
+CC			= cc
 RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror -I./includes
 
