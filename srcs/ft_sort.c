@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/16 18:34:31 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:07:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ int	ft_is_sorted(t_elem *head)
 		curr = curr->next;
 	}
 	return (1);
-}
-
-void	ft_sort_2(t_stack *a)
-{
-	if (a->head->value > a->head->next->value)
-		ft_sa(a);
 }
 
 void	ft_sort_3(t_stack *a)
@@ -58,13 +52,34 @@ void	ft_push_inf_n(t_stack *a, t_stack *b, int n)
 	}
 }
 
+int	ft_is_pushable(t_stack *a, t_elem *b)
+{
+	if (b->index < a->head->index && (b->index > a->head->prev->index
+			|| a->head->prev->index == a->imax))
+		return (1);
+	return (0);
+}
+
+int	ft_get_pushable(t_stack *a, t_stack *b)
+{
+	t_stack	tmp;
+	int		i;
+
+	tmp.head = b->head;
+	i = 0;
+	while(ft_is_pushable(a, tmp.head) == 0)
+	{
+		ft_rotate(&tmp);
+		i++;
+	}
+	return (i);
+}
+
 void	ft_insert(t_stack *a, t_stack *b)
 {
 	while (b->size)
 	{
-		if (b->head->index < a->head->index
-			&& (b->head->index > a->head->prev->index
-				|| a->head->prev->index == (a->size + b->size -1)))
+		if (ft_is_pushable(a, b->head))
 			ft_pa(a, b);
 		else
 			ft_ra(a);

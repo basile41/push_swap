@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/17 16:34:10 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:03:26 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 {
 	t_elem	*head;
 	int		size;
+	int		imax;
 }	t_stack;
 
 int		ft_push_swap(t_stack *a, t_stack *b);
