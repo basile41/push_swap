@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/19 22:23:22 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 23:02:21 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_get_pushable(t_stack *a, t_stack b, void (*f)(t_stack*))
 	return (i);
 }
 
-void ft_do_op(t_stack *a, t_stack *b, t_op *op)
+void	ft_do_op(t_stack *a, t_stack *b, t_op *op)
 {
 	//ft_printf("a = %d, b = %d, min = %d\n", op->a, op->b, op->min);
 	if (op->a > 0 && op->b > 0)
@@ -177,6 +177,21 @@ void	ft_insert_cheapest(t_stack *a, t_stack *b)
 
 }
 
+void	ft_final_rot(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (a->head->index != 0)
+		ft_rotate((i++, a));
+	if (a->size - i < i)
+		while (i++ < a->size)
+			ft_putendl("rra");
+	else
+		while (i--)
+			ft_putendl("ra");
+}
+
 void	ft_sort(t_stack *a, t_stack *b)
 {
 	ft_push_inf_n(a, b, a->size / 2);
@@ -184,7 +199,5 @@ void	ft_sort(t_stack *a, t_stack *b)
 	ft_sort_3(a);
 	while (b->head)
 		ft_insert_cheapest(a, b);
-	
-	while (a->head->index)
-		ft_ra(a);
+	ft_final_rot(a);
 }

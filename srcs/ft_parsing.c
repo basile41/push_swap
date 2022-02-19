@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:02:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/19 14:50:50 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 22:37:19 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_put_error(void)
 	write(1, "Error\n", 6);
 	return (0);
 }
-
 
 int	ft_check_errors(int size, char **strs)
 {

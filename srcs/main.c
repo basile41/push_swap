@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 20:28:17 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/17 16:58:46 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 22:36:04 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-
-// int main()
-// {
-// 	t_stack	stack;
-
-// 	ft_init_stack(&stack);
-// 	ft_add_new_elem(&stack, 5);
-// 	ft_add_new_elem(&stack, 8);
-// 	ft_add_new_elem(&stack, 1);
-// 	// ft_add_new_elem(&stack, 4);
-// 	// ft_add_new_elem(&stack, 9);
-
-// 	printf("%d\n", stack.head->value);
-// 	printf("%d\n", stack.head->next->value);
-// 	printf("%d\n", stack.head->next->next->value);
-// 	printf("%d\n\n", stack.head->next->next->next->value);
-
-// 	ft_rrotate(&stack);
-// 	printf("%d\n", stack.head->value);
-// 	printf("%d\n", stack.head->next->value);
-// 	printf("%d\n", stack.head->next->next->value);
-// 	printf("%d\n", stack.head->next->next->next->value);
-// 	ft_free_stack(&stack);
-// }
