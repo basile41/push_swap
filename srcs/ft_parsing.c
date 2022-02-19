@@ -6,14 +6,13 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:02:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/10 17:50:10 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 14:50:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 int	str_count(char *str, char c);
-int	ft_isint(char *s);
 
 int	ft_put_error(void)
 {

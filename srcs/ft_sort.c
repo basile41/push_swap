@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/17 21:07:50 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 22:23:22 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,19 @@ void	ft_push_inf_n(t_stack *a, t_stack *b, int n)
 	while (b->size < n)
 	{
 		curr = a->head;
-		if (curr->index < n)
+		if (curr->index <= n && curr->index != 0)
 			ft_pb(a, b);
 		else
 			ft_ra(a);
 	}
+}
+
+int	ft_is_consec(t_stack *a)
+{
+	if ((a->head->index == 0 && a->head->prev->index == a->imax)
+		|| a->head->index == a->head->prev->index + 1)
+		return (1);
+	return (0);
 }
 
 int	ft_is_pushable(t_stack *a, t_elem *b)
@@ -60,40 +68,123 @@ int	ft_is_pushable(t_stack *a, t_elem *b)
 	return (0);
 }
 
-int	ft_get_pushable(t_stack *a, t_stack *b)
+int	ft_get_pushable(t_stack *a, t_stack b, void (*f)(t_stack*))
 {
-	t_stack	tmp;
 	int		i;
 
-	tmp.head = b->head;
 	i = 0;
-	while(ft_is_pushable(a, tmp.head) == 0)
+	while (ft_is_pushable(a, b.head) == 0)
 	{
-		ft_rotate(&tmp);
+		f(&b);//rotate or rrotate
 		i++;
 	}
 	return (i);
 }
 
-void	ft_insert(t_stack *a, t_stack *b)
+void ft_do_op(t_stack *a, t_stack *b, t_op *op)
 {
-	while (b->size)
+	//ft_printf("a = %d, b = %d, min = %d\n", op->a, op->b, op->min);
+	if (op->a > 0 && op->b > 0)
+		while (ft_max(op->a, op->b))
+			ft_rr((op->a--, op->b--, a), b);
+	if (op->a < 0 && op->b < 0)
+		while (ft_min(op->a, op->b))
+			ft_rrr((op->a++, op->b++, a), b);
+	while (op->a > 0)
+		ft_ra((op->a--, a));
+	while (op->a < 0)
+		ft_rra((op->a++, a));
+	while (op->b > 0)
+		ft_rb((op->b--, b));
+	while (op->b < 0)
+		ft_rrb((op->b++, b));
+	ft_pa(a, b);
+}
+
+void	ft_insert_cheapest(t_stack *a, t_stack *b)
+{
+	t_elem	*head;
+	int		i;
+	int		j;
+	t_op	op;
+
+	op.a = a->size / 2;
+	op.b = b->size / 2;
+	op.min = op.a + op.b;
+	head = a->head;
+	i = 0;
+	while (i < a->size / 2 && i < op.min)
 	{
-		if (ft_is_pushable(a, b->head))
-			ft_pa(a, b);
-		else
-			ft_ra(a);
+		while (ft_is_consec(a))
+			ft_rotate((i++, a));
+		j = ft_get_pushable(a, *b, ft_rotate);
+		if (ft_max(i, j) < op.min)
+		{
+			op.min = ft_max(i, j);
+			op.a = i;
+			op.b = j;
+		}
+		ft_rotate((i++, a));
 	}
-	while (a->head->index != 0)
+	a->head = head;
+	i = 0;
+	while (i < a->size / 2 && i < op.min)
 	{
-		ft_rra(a);
+		while (ft_is_consec(a))
+			ft_rrotate((i++, a));
+		j = ft_get_pushable(a, *b, ft_rrotate);
+		if (ft_max(i, j) < op.min)
+		{
+			op.min = ft_max(i, j);
+			op.a = -i;
+			op.b = -j;
+		}
+		ft_rrotate((i++, a));
 	}
+	a->head = head;
+	i = 0;
+	while (i < a->size / 2 && i < op.min)
+	{
+		while (ft_is_consec(a))
+			ft_rotate((i++, a));
+		j = ft_get_pushable(a, *b, ft_rrotate);
+		if (i + j < op.min)
+		{
+			op.min = i + j;
+			op.a = i;
+			op.b = -j;
+		}
+		ft_rotate((i++, a));
+	}
+	a->head = head;
+	i = 0;
+	while (i < a->size / 2 && i < op.min)
+	{
+		while (ft_is_consec(a))
+			ft_rrotate((i++, a));
+		j = ft_get_pushable(a, *b, ft_rotate);
+		if (i + j < op.min)
+		{
+			op.min = i + j;
+			op.a = -i;
+			op.b = j;
+		}
+		ft_rrotate((i++, a));
+	}
+	a->head = head;
+	ft_do_op(a, b, &op);
+	// ft_aff_stack(a);
+
 }
 
 void	ft_sort(t_stack *a, t_stack *b)
 {
-	// ft_push_inf_n(a, b, a->size / 2);
+	ft_push_inf_n(a, b, a->size / 2);
 	ft_push_inf_n(a, b, (a->size + b->size - 3));
 	ft_sort_3(a);
-	ft_insert(a, b);
+	while (b->head)
+		ft_insert_cheapest(a, b);
+	
+	while (a->head->index)
+		ft_ra(a);
 }

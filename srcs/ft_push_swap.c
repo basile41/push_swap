@@ -6,13 +6,11 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/17 12:08:59 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 22:13:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	ft_aff_stack(t_stack *stack);
 
 int	ft_push_swap(t_stack *a, t_stack *b)
 {

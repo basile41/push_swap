@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/17 18:03:26 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/19 21:51:00 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct s_stack
 	int		size;
 	int		imax;
 }	t_stack;
+
+typedef struct s_op
+{
+	int	a;
+	int	b;
+	int	min;
+}	t_op;
 
 int		ft_push_swap(t_stack *a, t_stack *b);
 
@@ -70,5 +77,13 @@ void	ft_set_index(t_stack *stack);
 //ft_sort
 void	ft_sort(t_stack *a, t_stack *b);
 int		ft_is_sorted(t_elem *head);
+
+//ft_utils
+int		ft_isint(char *s);
+int		ft_abs(int n);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+
+void	ft_aff_stack(t_stack *stack); //       A supprimer
 
 #endif
