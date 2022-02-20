@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/19 21:51:00 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/20 19:05:03 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_stack
 	t_elem	*head;
 	int		size;
 	int		imax;
+	int		highest;
+	int		lowest;
 }	t_stack;
 
 typedef struct s_op
