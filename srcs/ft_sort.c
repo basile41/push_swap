@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/20 19:21:49 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:19:44 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ft_push_inf_n(t_stack *a, t_stack *b, int n)
 		else
 			ft_ra(a);
 	}
-	
 }
 
 int	ft_is_consec(t_stack *a)
@@ -92,12 +91,12 @@ int	ft_get_pushable(t_stack *a, t_stack b, void (*f)(t_stack*))
 
 void	ft_do_op(t_stack *a, t_stack *b, t_op *op)
 {
-	//ft_printf("a = %d, b = %d, min = %d\n", op->a, op->b, op->min);
+	ft_printf("a = %d, b = %d, min = %d\n", op->a, op->b, op->min);
 	if (op->a > 0 && op->b > 0)
-		while (ft_max(op->a, op->b))
+		while (ft_min(op->a, op->b))
 			ft_rr((op->a--, op->b--, a), b);
 	if (op->a < 0 && op->b < 0)
-		while (ft_min(op->a, op->b))
+		while (ft_max(op->a, op->b))
 			ft_rrr((op->a++, op->b++, a), b);
 	while (op->a > 0)
 		ft_ra((op->a--, a));
@@ -108,6 +107,8 @@ void	ft_do_op(t_stack *a, t_stack *b, t_op *op)
 	while (op->b < 0)
 		ft_rrb((op->b++, b));
 	ft_pa(a, b);
+	ft_aff_stack(b);
+	ft_aff_stack(a);
 }
 
 void	ft_insert_cheapest(t_stack *a, t_stack *b)
@@ -182,22 +183,21 @@ void	ft_insert_cheapest(t_stack *a, t_stack *b)
 	}
 	a->head = head;
 	ft_do_op(a, b, &op);
-	// ft_aff_stack(a);
 }
 
-void	ft_final_rot(t_stack *a)
+void	ft_final_rot(t_stack *a, t_stack copy)
 {
 	int	i;
 
 	i = 0;
-	while (a->head->index != 0)
-		ft_rotate((i++, a));
+	while (copy.head->index != 0)
+		ft_rotate((i++, &copy));
 	if (a->size - i < i)
 		while (i++ < a->size)
-			ft_putendl("rra");
+			ft_rra(a);
 	else
 		while (i--)
-			ft_putendl("ra");
+			ft_ra(a);
 }
 
 void	ft_sort(t_stack *a, t_stack *b)
@@ -212,5 +212,5 @@ void	ft_sort(t_stack *a, t_stack *b)
 	ft_sort_3(a);
 	while (b->head)
 		ft_insert_cheapest(a, b);
-	ft_final_rot(a);
+	ft_final_rot(a, *a);
 }
