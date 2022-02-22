@@ -6,12 +6,11 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 20:28:17 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/20 14:59:27 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:13:22 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {

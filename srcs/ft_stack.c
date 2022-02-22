@@ -6,15 +6,11 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 20:03:04 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/20 19:24:23 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:06:02 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-//ft_stack2.c
-void	ft_sup_first_elem(t_stack *stack);
-void	ft_free_stack(t_stack *stack);
 
 void	ft_rotate(t_stack *stack)
 {

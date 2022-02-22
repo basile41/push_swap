@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:24:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/21 16:35:37 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:02:30 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	ft_push_swap(t_stack *a, t_stack *b)
 {
 	ft_set_index(a);
 	ft_sort(a, b);
-	ft_aff_stack(a);
+	//ft_aff_stack(a);
 	return (1);
 }

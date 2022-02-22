@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/21 17:19:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:49:10 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_get_pushable(t_stack *a, t_stack b, void (*f)(t_stack*))
 
 void	ft_do_op(t_stack *a, t_stack *b, t_op *op)
 {
-	ft_printf("a = %d, b = %d, min = %d\n", op->a, op->b, op->min);
+	//ft_printf("a = %d, b = %d, min = %d\n", op->a, op->b, op->min);
 	if (op->a > 0 && op->b > 0)
 		while (ft_min(op->a, op->b))
 			ft_rr((op->a--, op->b--, a), b);
@@ -107,8 +107,8 @@ void	ft_do_op(t_stack *a, t_stack *b, t_op *op)
 	while (op->b < 0)
 		ft_rrb((op->b++, b));
 	ft_pa(a, b);
-	ft_aff_stack(b);
-	ft_aff_stack(a);
+	//ft_aff_stack(b);
+	//ft_aff_stack(a);
 }
 
 void	ft_insert_cheapest(t_stack *a, t_stack *b)
@@ -118,8 +118,8 @@ void	ft_insert_cheapest(t_stack *a, t_stack *b)
 	int		j;
 	t_op	op;
 
-	op.a = a->size / 2;
-	op.b = b->size / 2;
+	op.a = a->size;
+	op.b = b->size;
 	op.min = op.a + op.b;
 	head = a->head;
 	i = 0;
