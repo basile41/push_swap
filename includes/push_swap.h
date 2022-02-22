@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/20 19:05:03 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:56:09 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int		ft_is_sorted(t_elem *head);
 
 //ft_utils
 int		ft_isint(char *s);
-int		ft_abs(int n);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 

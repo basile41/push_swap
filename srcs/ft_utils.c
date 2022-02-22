@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:43:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/19 16:18:35 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:55:56 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ int	ft_isint(char *s)
 		if (ft_isdigit(*s++) == 0)
 			return (0);
 	return (1);
-}
-
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
 }
 
 int	ft_min(int a, int b)
