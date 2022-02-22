@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/22 15:49:10 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:17:21 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,23 @@ void	ft_sort_3(t_stack *a)
 
 void	ft_push_inf_n(t_stack *a, t_stack *b, int n)
 {
-	t_elem	*curr;
-	t_elem	*zero;
+	t_elem	*min;
 
-	zero = a->head;
-	while (zero->index != 0)
-		zero = zero->next;
-	while (b->size < n)
+	while (b->size < n && a->size > 3)
 	{
-		if (ft_is_sorted(zero))
+		min = a->head;
+		while (min->value != a->lowest)
+			min = min->next;
+		//ft_aff_stack(a);
+		if (ft_is_sorted(min))
 			return ;
-		curr = a->head;
-		if (curr->index <= n && curr->index != 0)
+		if (a->head->index <= n)
 			ft_pb(a, b);
 		else
 			ft_ra(a);
+		if (b->head && a->head->index == a->head->next->index + 1
+			&& b->head->index == b->head->next->index - 1)
+			ft_ss(a, b);
 	}
 }
 
@@ -70,8 +72,10 @@ int	ft_is_consec(t_stack *a)
 
 int	ft_is_pushable(t_stack *a, t_elem *b)
 {
-	if (b->index < a->head->index && (b->index > a->head->prev->index
-			|| a->head->prev->index == a->imax))
+	if (a->head->value == a->lowest
+		&& (b->value < a->lowest || b->value > a->highest))
+		return (1);
+	if (b->index < a->head->index && b->index > a->head->prev->index)
 		return (1);
 	return (0);
 }
@@ -206,9 +210,7 @@ void	ft_sort(t_stack *a, t_stack *b)
 	// 	return ;
 	if (a->size > 25)
 		ft_push_inf_n(a, b, a->size / 2);
-	// while (a->size < 7 && a->size > 3)
-	// 	ft_pb(a, b);
-	ft_push_inf_n(a, b, (a->size + b->size - 3));
+	ft_push_inf_n(a, b, (a->imax + 1));
 	ft_sort_3(a);
 	while (b->head)
 		ft_insert_cheapest(a, b);

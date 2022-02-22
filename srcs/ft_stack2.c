@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:32:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/15 20:59:06 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:04:53 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,38 @@ void	ft_push(t_stack *src, t_stack *dst)
 	ft_add_front(dst, elem);
 }
 
-void	ft_sup_first_elem(t_stack *stack)
+void	ft_set_min_max(t_stack *stack)
 {
-	if (stack->size == 1)
-		ft_bzero(stack, sizeof(*stack));
-	if (stack->size)
+	t_elem	*curr;
+
+	stack->highest = stack->head->value;
+	stack->lowest = stack->head->value;
+	curr = stack->head->next;
+	while (curr != stack->head)
 	{
-		stack->head->next->prev = stack->head->prev;
-		stack->head->prev->next = stack->head->next;
-		stack->head = stack->head->next;
-		stack->size--;
+		if (curr->value > stack->highest)
+			stack->highest = curr->value;
+		if (curr->value < stack->lowest)
+			stack->lowest = curr->value;
+		curr = curr->next;
 	}
 }
 
-t_elem	*get_next(t_elem *elem, t_elem *curr)
+void	ft_sup_first_elem(t_stack *stack)
 {
-	if (!curr)
-	{
-		curr = elem;
-		return (curr);
-	}
-	if (curr)
-		curr = curr->next;
-	if (curr == elem)
-		curr = NULL;
-	return (curr);
+	int		value;
+
+	value = stack->head->value;
+	if (stack->size == 1)
+		ft_bzero(stack, sizeof(*stack));
+	if (stack->size == 0)
+		return ;
+	stack->head->next->prev = stack->head->prev;
+	stack->head->prev->next = stack->head->next;
+	stack->head = stack->head->next;
+	stack->size--;
+	if (value == stack->highest || value == stack->lowest)
+		ft_set_min_max(stack);
 }
 
 void	ft_free_stack(t_stack *stack)
@@ -86,6 +93,7 @@ void	ft_aff_stack(t_stack *stack)
 	i = 0;
 	curr = stack->head;
 	ft_printf("size = %d\n", stack->size);
+	ft_printf("min = %d\nmax = %d\n", stack->lowest, stack->highest);
 	while (i < stack->size)
 	{
 		ft_printf("index : %d \tvalue : %d\n",curr->index, curr->value);
