@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:32:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/22 20:04:53 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:45:30 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_aff_stack(t_stack *stack)
 	ft_printf("min = %d\nmax = %d\n", stack->lowest, stack->highest);
 	while (i < stack->size)
 	{
-		ft_printf("index : %d \tvalue : %d\n",curr->index, curr->value);
+		ft_printf("index : %d \tvalue : %d\n", curr->index, curr->value);
 		curr = curr->next;
 		i++;
 	}

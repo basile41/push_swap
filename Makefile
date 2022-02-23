@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 19:09:54 by bregneau          #+#    #+#              #
-#    Updated: 2022/02/17 16:51:26 by bregneau         ###   ########.fr        #
+#    Updated: 2022/02/23 17:36:35 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRCS			= 	main.c \
 					ft_op_rot.c \
 					ft_op_rrot.c \
 					ft_set_index.c \
-					ft_sort.c
+					ft_sort.c \
+					ft_sort2.c \
+					ft_sort3.c
 
 OBJS			=	$(addprefix $(OBJS_PATH),$(SRCS:.c=.o))
 
