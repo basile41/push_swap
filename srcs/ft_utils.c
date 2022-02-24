@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:43:30 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/23 17:44:55 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:55:50 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,4 @@ int	ft_max(int a, int b)
 	if (b > a)
 		return (b);
 	return (a);
-}
-
-int	ft_sum(int a, int b)
-{
-	return (a + b);
 }

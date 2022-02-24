@@ -2,3 +2,6 @@
 .*
 *.a
 push_swap
+checker
+42-push_swap_tester/
+Random-numbers-generator/

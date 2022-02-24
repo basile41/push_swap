@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 20:28:17 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/22 14:13:22 by bregneau         ###   ########.fr       */
+/*   Created: 2022/02/10 17:24:31 by bregneau          #+#    #+#             */
+/*   Updated: 2022/02/24 17:56:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 			ft_free_stack(&a);
 			return (ft_put_error());
 		}
-		ft_push_swap(&a, &b);
+		ft_sort(&a, &b);
 		ft_free_stack(&a);
 		ft_free_stack(&b);
 	}

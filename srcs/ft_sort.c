@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:57:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/23 17:44:12 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/24 15:49:23 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_final_rot(t_stack *a, t_stack copy)
 
 void	ft_sort(t_stack *a, t_stack *b)
 {
+	ft_set_index(a);
 	if (a->size > 25)
 		ft_push_inf_n(a, b, a->size / 2);
 	ft_push_inf_n(a, b, (a->imax + 1));

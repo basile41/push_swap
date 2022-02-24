@@ -6,12 +6,16 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:03:31 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/23 17:42:00 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/24 20:40:24 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
 # include "libft.h"
 # include <limits.h>
@@ -38,10 +42,10 @@ typedef struct s_op
 {
 	int		a;
 	int		b;
-	void	(*f1[2])(t_stack*);
-	int		(*f2[2])(int, int);
 	int		min;
 }	t_op;
+
+typedef void			(*t_f)(t_stack *);
 
 int		ft_push_swap(t_stack *a, t_stack *b);
 
@@ -73,7 +77,6 @@ void	ft_swap(t_stack *stack);
 void	ft_push(t_stack *src, t_stack *dst);
 void	ft_sup_first_elem(t_stack *stack);
 void	ft_free_stack(t_stack *stack);
-t_elem	*get_next(t_elem *elem, t_elem *curr);
 
 //ft_set_index
 void	ft_set_index(t_stack *stack);
@@ -91,8 +94,10 @@ void	ft_do_op(t_stack *a, t_stack *b, t_op *op);
 int		ft_isint(char *s);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
-int		ft_sum(int a, int b);
 
 void	ft_aff_stack(t_stack *stack); //       A supprimer
+
+//GNL
+char	*get_next_line(int fd);
 
 #endif
