@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:10:25 by bregneau          #+#    #+#             */
-/*   Updated: 2022/02/24 22:00:24 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/02/24 22:32:12 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ void	ft(t_stack *a, t_stack *b, void f(t_stack*))
 
 int	ft_if_forest(t_stack *a, t_stack *b, char *line)
 {
-	if (strcmp(line, "sa\n") == 0)
+	if (ft_strcmp(line, "sa\n") == 0)
 		ft_swap(a);
-	else if (strcmp(line, "sb\n") == 0)
+	else if (ft_strcmp(line, "sb\n") == 0)
 		ft_swap(b);
-	else if (strcmp(line, "ss\n") == 0)
+	else if (ft_strcmp(line, "ss\n") == 0)
 		ft(a, b, ft_swap);
-	else if (strcmp(line, "pa\n") == 0)
+	else if (ft_strcmp(line, "pa\n") == 0)
 		ft_push(b, a);
-	else if (strcmp(line, "pb\n") == 0)
+	else if (ft_strcmp(line, "pb\n") == 0)
 		ft_push(a, b);
-	else if (strcmp(line, "ra\n") == 0)
+	else if (ft_strcmp(line, "ra\n") == 0)
 		ft_rotate(a);
-	else if (strcmp(line, "rb\n") == 0)
+	else if (ft_strcmp(line, "rb\n") == 0)
 		ft_rotate(b);
-	else if (strcmp(line, "rr\n") == 0)
+	else if (ft_strcmp(line, "rr\n") == 0)
 		ft(a, b, ft_rotate);
-	else if (strcmp(line, "rra\n") == 0)
+	else if (ft_strcmp(line, "rra\n") == 0)
 		ft_rrotate(a);
-	else if (strcmp(line, "rrb\n") == 0)
+	else if (ft_strcmp(line, "rrb\n") == 0)
 		ft_rrotate(b);
-	else if (strcmp(line, "rrr\n") == 0)
+	else if (ft_strcmp(line, "rrr\n") == 0)
 		ft(a, b, ft_rrotate);
 	else
 		return (0);
